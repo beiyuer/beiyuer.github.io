@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>结构体</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>结构体</h2>
+<p><code>struct &lt;定义语句&gt;</code></p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v1;
+    <span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v2;
+    <span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v3;
+    <span class="hljs-comment">// v1 = (v1.x, v1.y)</span>
+    <span class="hljs-comment">// v2 = (v2.x, v2.y)</span>
+    <span class="hljs-comment">// v3 = (v3.x, v3.y)</span>
+
+    v1.x = get_int(); 
+    v1.y = get_int();
+
+    v2.x = v1.x;
+    v2.y = v1.y;
+
+    v3 = v1;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v1;
+<span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v2;
+<span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } v3;</code></pre><pre class="hljs"><code><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } <span class="hljs-built_in">vector</span>;
+vector2 v1;
+vector2 v2;
+vector2 v3;</code></pre><pre class="hljs"><code><span class="hljs-keyword">typedef</span> 
+<span class="hljs-keyword">struct</span> {
+    <span class="hljs-keyword">int</span> x;
+    <span class="hljs-keyword">int</span> y;
+} 
+<span class="hljs-built_in">vector</span>;
+
+vector2 v1;
+vector2 v2;
+vector2 v3;</code></pre><pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> { <span class="hljs-keyword">int</span> x; <span class="hljs-keyword">int</span> y; } vector2;
+
+<span class="hljs-function">vector2 <span class="hljs-title">new_vector2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
+    vector2 result;
+    result.x = x;
+    result.y = y;
+    <span class="hljs-keyword">return</span> result;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_vector2</span><span class="hljs-params">(vector2 v)</span> </span>{
+    put_char(<span class="hljs-string">'('</span>);
+    put_int(v.x);
+    put_string(<span class="hljs-string">", "</span>);
+    put_int(v.y);
+    put_char(<span class="hljs-string">')'</span>);
+}
+
+<span class="hljs-function">vector2 <span class="hljs-title">add</span><span class="hljs-params">(vector2 x, vector2 y)</span> </span>{
+    <span class="hljs-keyword">return</span> new_vector2(x.x+y.x, x.y+y.y);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dot</span><span class="hljs-params">(vector2 x, vector2 y)</span> </span>{
+    <span class="hljs-keyword">return</span> x.x * y.x + x.y * y.y;
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    vector2 a1;
+    vector2 a2;
+
+    a1 = new_vector2(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+    a2 = new_vector2(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>);
+
+    put_vector2(a1);
+    put_vector2(add(a1, a2));
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h3 id="oop"><a class="header-link" href="#oop"></a>OOP</h3>
+<blockquote>
+<p>方法: 构造, 计算, 显示</p>
+</blockquote>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><pre class="hljs"><code><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">bool</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span> <span class="hljs-literal">true</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">bool</span> <span class="hljs-literal">false</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_char</span><span class="hljs-params">(<span class="hljs-keyword">char</span> x)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, x);
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_int</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>, x);
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_float</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%f"</span>, x);
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_string</span><span class="hljs-params">(<span class="hljs-built_in">string</span> x)</span> </span>{
+    <span class="hljs-keyword">char</span> *c;
+    <span class="hljs-keyword">for</span> (c=x; (*c)!=<span class="hljs-string">'\0'</span>; c++) {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%c"</span>, *c);
+    }
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put_bool</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> x)</span> </span>{
+    put_string(x ? <span class="hljs-string">"true"</span> : <span class="hljs-string">"false"</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">get_char</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span> x;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%c"</span>, &amp;x);
+    <span class="hljs-keyword">return</span> x;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_int</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> x;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;x);
+    <span class="hljs-keyword">return</span> x;
+}
+<span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">get_float</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">float</span> x;
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%f"</span>, &amp;x);
+    <span class="hljs-keyword">return</span> x;
+}</code></pre>    </article>
+  </body>
+</html>

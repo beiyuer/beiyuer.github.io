@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>转义字符</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="-"><a class="header-link" href="#-"></a>转义字符</h2>
+<p>在一个<strong>字符串</strong>中, 一些字符, 比如回车符, 不能直接出现在字符串中。
+另一些字符, 比如 <code>&quot;</code> 可能引起<strong>歧义</strong></p>
+<p>为了在字符串中使用无法直接出现的字符或预防歧义, 反斜杠 <code>\</code> 被用来组成转义字符</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 这个语句在屏幕上显示了三行字符</span>
+    <span class="hljs-comment">// 字符串里使用 `\n` 两个字符代表 `&lt;回车符&gt;`</span>
+    put_string(<span class="hljs-string">"*********\n* Hello *\n*********"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 这个语句语法正确, 因为使用了 `\"`两个字符代表 `"`一个字符</span>
+    put_string(<span class="hljs-string">"I want put \" inside a string !"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 这个语句有歧义, 代码有语法错误, 从代码着色可以看出歧义来源</span>
+    put_string(<span class="hljs-string">"I want put "</span> inside a <span class="hljs-built_in">string</span> !<span class="hljs-string">");
+
+    return 0;
+}</span></code></pre><p>下表介绍了，在一个字符串中可能引起歧义的字符对应的转义字符</p>
+<table>
+<tr>
+    <th>原字符</th>
+    <th>转义字符</th>
+</tr>
+<tr>
+    <td>&lt;回车符&gt;</td>
+    <td>\n</td>
+</tr>
+<tr>
+    <td>&lt;制表符&gt;</td>
+    <td>\t</td>
+</tr>
+<tr>
+    <td>&lt;退格符&gt;</td>
+    <td>\b</td>
+</tr>
+<tr>
+    <td>&quot;</td>
+    <td>\&quot;</td>
+</tr>
+<tr>
+    <td>\</td>
+    <td>\\</td>
+</tr>
+</table>
+    </article>
+  </body>
+</html>

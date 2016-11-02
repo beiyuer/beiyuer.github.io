@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>数组</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>数组</h2>
+<blockquote>
+<p><code>类型 数组名[数组大小];</code> 是数组的定义语句, 第5节类型将介绍定义语句的一般语法</p>
+<p><code>a[i]</code> 是数组中第i+1个元素</p>
+</blockquote>
+<h2 id="--1"><a class="header-link" href="#--1"></a>数组初始化</h2>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">3</span>];
+
+    a[<span class="hljs-number">0</span>] = get_int();
+    a[<span class="hljs-number">1</span>] = get_int();
+    a[<span class="hljs-number">2</span>] = get_int();
+    <span class="hljs-comment">// a[3] does not exist</span>
+
+    put_string(<span class="hljs-string">"the second element in array `a` is "</span>);
+    put_int(a[<span class="hljs-number">1</span>]);
+    warp();
+
+    put_string(<span class="hljs-string">"the sum of elements in the array is "</span>);
+    put_int(a[<span class="hljs-number">0</span>] + a[<span class="hljs-number">1</span>] + a[<span class="hljs-number">2</span>]);
+    warp();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-keyword">int</span> a[<span class="hljs-number">3</span>] = { get_int(), get_int(), get_int() }</code></pre><h2 id="--2"><a class="header-link" href="#--2"></a>数组与循环</h2>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i = i + <span class="hljs-number">1</span>) {
+        a[i] = i + <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">int</span> sum;
+    sum = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i = i + <span class="hljs-number">1</span>) {
+        sum = sum + a[i];
+    }
+
+    put_string(<span class="hljs-string">"The sum from 1 to 100 is "</span>);
+    put_int(sum);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i = i + <span class="hljs-number">1</span>) {
+        a[i] = i + <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">int</span> product;
+    product = <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i = i + <span class="hljs-number">1</span>) {
+        product = product * a[i];
+    }
+
+    put_string(<span class="hljs-string">"The product from 1 to 10 is "</span>);
+    put_int(product);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">30</span>];
+
+    a[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+    a[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">2</span>; i &lt; <span class="hljs-number">30</span>; i = i + <span class="hljs-number">1</span>) {
+        a[i] = a[i - <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">2</span>];
+    }
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">30</span>; i = i + <span class="hljs-number">1</span>) {
+        put_int(a[i]);
+        warp();
+    }
+}</code></pre><h2 id="--3"><a class="header-link" href="#--3"></a>字符串</h2>
+<p>字符串, 实质是字符的数组, 以结束字符 <code>\0</code> 作为字符串终止的标志 </p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-built_in">string</span> str1 = <span class="hljs-string">"some text"</span>;
+    put_string(str1);
+    warp();
+
+    <span class="hljs-keyword">char</span> str2[<span class="hljs-number">10</span>] = <span class="hljs-string">"some text"</span>;
+    put_string(str2);
+    warp();
+
+    <span class="hljs-keyword">char</span> str3[<span class="hljs-number">10</span>] = { <span class="hljs-string">'s'</span>, <span class="hljs-string">'o'</span>, <span class="hljs-string">'m'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">' '</span>, <span class="hljs-string">'t'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'x'</span>, <span class="hljs-string">'t'</span>, <span class="hljs-string">'\0'</span> };
+    put_string(str3);
+    warp();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>    </article>
+  </body>
+</html>

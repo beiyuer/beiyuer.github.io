@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>if 语句</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+
+<h2 id="if-"><a class="header-link" href="#if-"></a>if 语句</h2>
+<p><code>if &lt;表达式&gt; &lt;语句&gt;</code></p>
+<p>如果表达式等于 <code>true</code>, 语句会被执行</p>
+<p>如果表达式等于 <code>false</code>, 此 if 语句会被跳过</p>
+<p>其中, 表达式必须是圆括号表达式, 防止歧义</p>
+<pre class="hljs"><code>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    put_string(<span class="hljs-string">"input an integer: "</span>);
+    <span class="hljs-keyword">int</span> x = get_int();
+
+    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>) x = -x;
+
+    put_string(<span class="hljs-string">"The absolute value of it is "</span>);
+    put_int(x);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><p>所有的 <strong>零值</strong> 都会被当作 <code>false</code></p>
+<p>所有的 <strong>非零值</strong> 都会被当作 <code>true</code></p>
+<table>
+<tr>
+    <th>零值</th>
+    <th>非零值</th>
+</tr>
+<tr>
+    <td><code>false</code> <code>0</code> &#39;\0&#39;</td>
+    <td><code>true</code> <code>1</code> <code>&#39;a&#39;</code></td>
+</tr>
+</table>
+
+<pre class="hljs"><code>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-number">1</span>) put_string(<span class="hljs-string">"`1` is regarded as true!\n"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="if-else-"><a class="header-link" href="#if-else-"></a>if-else 语句</h2>
+<p><code>if &lt;表达式&gt; &lt;语句&gt; else &lt;语句&gt;</code></p>
+<p>如果表达式等于 <code>true</code>, 第一个语句块会被执行</p>
+<p>如果表达式等于 <code>false</code>, else 后的语句块会被执行</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    put_string(<span class="hljs-string">"Welcome to Litan\'s Secret Database.\n"</span>);
+    put_string(<span class="hljs-string">"Password:"</span>);
+    <span class="hljs-keyword">int</span> password = get_int();
+
+    <span class="hljs-keyword">if</span> (password == <span class="hljs-number">2333</span>)
+        put_string(<span class="hljs-string">"Access Granted"</span>);
+    <span class="hljs-keyword">else</span>
+        put_string(<span class="hljs-string">"Access Denied"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="while-"><a class="header-link" href="#while-"></a>while 语句</h2>
+<p><code>while &lt;表达式&gt; &lt;语句&gt;</code></p>
+<p>如果表达式等于 <code>true</code>, 语句会被执行, 然后再次执行此 while 语句</p>
+<p>如果表达式等于 <code>false</code>, 此 while 语句会被跳过</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+
+    i = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">10</span>) {
+
+        <span class="hljs-comment">//////////////////////////////////////////////////</span>
+        <span class="hljs-comment">// 在这一部分的代码, 将会执行10次, 其中i等于执行的次数</span>
+        <span class="hljs-comment">//////////////////////////////////////////////////</span>
+
+        i = i + <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="for-"><a class="header-link" href="#for-"></a>for 语句</h2>
+<p><code>for (表达式1; 表达式2; 表达式3) &lt;语句&gt;</code></p>
+<p><strong>for语句</strong> 可以看作 <strong>while</strong> 语句的简写</p>
+<p><code>表达式1; while 表达式2 { &lt;语句&gt; 表达式3; }</code></p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i = i + <span class="hljs-number">1</span>) {
+        <span class="hljs-comment">//////////////////////////////////////////////////</span>
+        <span class="hljs-comment">// 在这一部分的代码, 将会执行10次, 其中i等于执行的次数</span>
+        <span class="hljs-comment">//////////////////////////////////////////////////</span>
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="-"><a class="header-link" href="#-"></a>代码风格</h2>
+<p>推论, 关键字, 表达式和语句间, 可以任意使用空白字符进行排版</p>
+<ul class="list">
+<li><code>if &lt;表达式&gt;</code> 或 <code>else</code> 独占一行</li>
+<li>总是使用语句块</li>
+<li>语句块内的所有语句, 使用制表符进行缩写</li>
+<li>每在一层语句块内, 增加制表符进行缩进</li>
+</ul>
+<p>语法正确, 风格不推荐</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> &lt;表达式&gt; &lt;语句&gt; <span class="hljs-keyword">else</span> &lt;语句&gt;</code></pre><pre class="hljs"><code><span class="hljs-keyword">if</span> &lt;表达式&gt; &lt;语句&gt;</code></pre><p>推荐风格</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> &lt;表达式&gt; 
+{ 
+    &lt;语句<span class="hljs-number">1</span>&gt;
+    &lt;语句<span class="hljs-number">2</span>&gt;
+    ...
+}</code></pre><pre class="hljs"><code><span class="hljs-keyword">if</span> &lt;表达式&gt; 
+{ 
+    &lt;语句<span class="hljs-number">1</span>&gt;
+    &lt;语句<span class="hljs-number">2</span>&gt;
+    ...
+}
+<span class="hljs-keyword">else</span> &lt;表达式&gt; 
+{ 
+    &lt;语句<span class="hljs-number">3</span>&gt;
+    &lt;语句<span class="hljs-number">4</span>&gt;
+    ...
+}</code></pre><p>嵌套的 if-else 语句, 推荐else后的语句不构成语句块, 进行特殊排版</p>
+<p>形成类似 if-elseif, if-elseif-else 语句的效果</p>
+<pre class="hljs"><code><span class="hljs-keyword">if</span> &lt;表达式&gt; 
+    &lt;语句&gt; 
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> &lt;表达式&gt; 
+    &lt;语句&gt; 
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> &lt;表达式&gt; 
+    &lt;语句&gt;
+    .
+    . 任意个<span class="hljs-keyword">else</span>
+    .
+<span class="hljs-keyword">else</span> 
+    &lt;语句&gt;</code></pre>    </article>
+  </body>
+</html>

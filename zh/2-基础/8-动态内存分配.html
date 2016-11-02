@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>栈式内存管理</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>栈式内存管理</h2>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">get_message</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span> message[<span class="hljs-number">10</span>] = <span class="hljs-string">"some text"</span>;
+    <span class="hljs-keyword">return</span> message;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-built_in">string</span> value = get_message();
+    put_string(value); <span class="hljs-comment">// error !</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--1"><a class="header-link" href="#--1"></a>动态内存分配</h2>
+<p><code>pointer malloc(int size)</code></p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">get_message</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">char</span> *message = (<span class="hljs-keyword">char</span> *)(<span class="hljs-built_in">malloc</span>(<span class="hljs-number">10</span>*<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>)));
+    <span class="hljs-comment">// message = "Hello";</span>
+    message[<span class="hljs-number">0</span>] = <span class="hljs-string">'H'</span>;
+    message[<span class="hljs-number">1</span>] = <span class="hljs-string">'e'</span>;
+    message[<span class="hljs-number">2</span>] = <span class="hljs-string">'l'</span>;
+    message[<span class="hljs-number">3</span>] = <span class="hljs-string">'l'</span>;
+    message[<span class="hljs-number">4</span>] = <span class="hljs-string">'o'</span>;
+    message[<span class="hljs-number">5</span>] = <span class="hljs-string">'\0'</span>;
+    <span class="hljs-keyword">return</span> message;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-built_in">string</span> value = get_message();
+    put_string(value); <span class="hljs-comment">// OK</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--2"><a class="header-link" href="#--2"></a>内存释放</h2>
+<p><code>pointer malloc(int size)</code></p>
+    </article>
+  </body>
+</html>

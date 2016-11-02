@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>语句</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>语句</h2>
+<table>
+<tr>
+    <th>语句分类</th>
+    <th>语句一般语法</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td><strong>空语句</strong></td>
+    <td><code>;</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><strong>表达式语句</strong></td>
+    <td><code>&lt;表达式&gt;;</code></td>
+    <td>
+        <code>1 + 2 * 3;</code>
+        <br/>
+        <code>put_string(&quot;input radius&quot;);</code>
+        <br/>
+        <code>radius = get_float();</code>
+    </td>
+</tr>
+<tr>
+    <td><strong>定义</strong></td>
+    <td>
+        <code>&lt;类型&gt; &lt;表达式&gt;;</code>
+    </td>
+    <td><code>float radius;</code></td>
+</tr>
+<tr>
+    <td><strong>初始化</strong></td>
+    <td>
+        <code>&lt;类型&gt; &lt;表达式&gt; = &lt;表达式&gt;;</code>
+    </td>
+    <td>
+        <code>float pi = 3.14;</code>
+    </td>
+</tr>
+<tr>
+    <td><strong>结构语句</strong></td>
+    <td>
+        <code>return &lt;表达式&gt;;</code>
+        <br/>
+        <code>if &lt;表达式&gt; &lt;语句&gt;</code>
+        <br/>
+        <code>while &lt;表达式&gt; &lt;语句&gt;</code>
+        <br/>
+    </td>
+    <td><code>return 0;</code></td>
+</tr>
+<tr>
+    <td><strong>语句块</strong></td>
+    <td><code>{ ... }</code></td>
+    <td></td>
+</tr>
+</table>
+
+
+<h2 id="--1"><a class="header-link" href="#--1"></a>语句的作用</h2>
+<table>
+<tr>
+    <th>语句</th>
+    <th>作用</th>
+</tr>
+<tr>
+    <td><strong>空语句</strong></td>
+    <td>什么也不做</td>
+</tr>
+<tr>
+    <td><strong>表达式语句</strong></td>
+    <td>计算, 赋值, 输入输出</td>
+</tr>
+<tr>
+    <td><strong>定义语句</strong></td>
+    <td>明确变量的类型, 分配存储空间</td>
+</tr>
+<tr>
+    <td><strong>初始化语句</strong></td>
+    <td>
+        明确变量的类型, 分配存储空间, 并且给变量赋值
+    </td>
+</tr>
+<tr>
+    <td><strong>结构语句</strong></td>
+    <td>
+        改变语句的执行顺序
+    </td>
+</tr>
+</table>
+
+<p>一个初始化语句, 作用相当于一个定义语句和一个赋值表达式语句</p>
+<p>结构语句的作用将在第二章介绍</p>
+<h2 id="--2"><a class="header-link" href="#--2"></a>语句块</h2>
+<p><code>{ ... }</code></p>
+<p><code>{ &lt;语句&gt; }</code></p>
+<p><code>{ &lt;语句1&gt; &lt;语句2&gt; ... }</code></p>
+<p>语句块是一种语句, 所以需要语句的地方, 都可以使用语句块</p>
+<p>执行语句块, 相当于依次执行花括号内所有语句</p>
+<p><code>{}</code> 也是一个语句, 相当于空语句</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    {{{{{;{{}}
+    ;;;;{{{{{;
+    put_string
+    (<span class="hljs-string">"Hello"</span>);
+    ;}};;;}}}}
+    };;;{{}};;
+    ;}};;;;;;}
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--3"><a class="header-link" href="#--3"></a>代码风格</h2>
+<blockquote>
+<p>已移至选择与循环</p>
+</blockquote>
+    </article>
+  </body>
+</html>

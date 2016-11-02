@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>类型</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>类型</h2>
+<p>每一个数据或表达式都有对应的类型</p>
+<p><strong>简单类型</strong>, 可以用一个类型单词表示</p>
+<blockquote>
+<p><code>bool</code> <code>int</code> <code>float</code> <code>char</code> <code>string</code></p>
+</blockquote>
+<p><strong>复合类型</strong>, 需要其他类型形成<strong>具体类型</strong></p>
+<blockquote>
+<p><strong>指针</strong> <strong>数组</strong> <strong>结构体</strong> <strong>函数</strong></p>
+</blockquote>
+<p class="img-container"><img src="../../graph/tree.svg" class="limited"/></p>
+<table>
+<tr>
+    <th>复合类型</th>
+    <th>类型参数数量</th>
+</tr>
+<tr>
+    <td>指针</td>
+    <td>一</td>
+</tr>
+<tr>
+    <td>数组</td>
+    <td>一</td>
+</tr>
+<tr>
+    <td>函数</td>
+    <td>多</td>
+</tr>
+<tr>
+    <td>结构体</td>
+    <td>多</td>
+</tr>
+</table>
+
+
+<h2 id="--1"><a class="header-link" href="#--1"></a>泛型运算符</h2>
+<!-- operators -->
+<h2 id="--2"><a class="header-link" href="#--2"></a>定义语句</h2>
+<p>这一节解释定义语句的语法 <code>&lt;类型&gt; &lt;表达式&gt;;</code></p>
+<p>定义语句 <code>&lt;类型&gt; &lt;变量&gt;;</code>, 明确了变量的类型</p>
+<p>定义语句 <code>&lt;类型&gt; &lt;表达式&gt;;</code> 明确了表达式的类型, 通过推断, 
+可以明确表达式内变量的类型</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">float</span> pi;
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>];
+    <span class="hljs-keyword">int</span> *p;
+}</code></pre><blockquote>
+<p><code>float pi;</code> 明确了 <code>pi</code> 是浮点数</p>
+<p><code>int a[10];</code> 明确了 <code>a[...]</code> 是一个整数, 所以 <code>a</code> 是一个内容为整数的数组</p>
+<p><code>int *p;</code> 明确了 <code>p</code> 的内容是一个整数, 所以 <code>p</code> 是一个指向整数的指针</p>
+<p><code>int main() { ... }</code> 是一个初始化语句的特殊形式, 
+<code>int main() = { ... };</code> 是其完整形式。 
+其 <code>&lt;类型&gt; &lt;表达式&gt;</code> 部分明确了
+<code>main()</code> 是一个整数, 所以 <code>main</code> 是一个返回整数、不带参数的函数。
+<code>main</code> 函数被 <code>{ ... }</code> 赋予初始值</p>
+</blockquote>
+<h2 id="--3"><a class="header-link" href="#--3"></a>类型定义语句</h2>
+<p><code>typedef &lt;类型&gt; &lt;表达式&gt;;</code></p>
+<p>类型定义语句的一部分类似定义语句 <code>&lt;类型&gt; &lt;表达式&gt;;</code></p>
+<p><code>&lt;类型&gt; &lt;表达式&gt;;</code> 明确了某个标识符是变量及其类型</p>
+<p>通过 <code>typedef</code> 关键字, 使得这个标识符成为了类型本身</p>
+<pre class="hljs"><code><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">bool</span>;
+<span class="hljs-keyword">int</span> <span class="hljs-literal">false</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> <span class="hljs-literal">true</span> = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>;</code></pre><blockquote>
+<p><code>int bool;</code>, 明确了 <code>bool</code> 是一个 整数型变量</p>
+<p>通过 <code>typedef</code>, <code>typedef int bool;</code> 明确了
+<code>bool</code> 不再是一个整数型变量, 而是整数类型本身(一个别名)</p>
+<p><code>char *string;</code>, 明确了 <code>*string</code> 是字符型, <code>string</code>
+是指向字符型的指针</p>
+<p>通过<code>typedef</code>, <code>typedef char *string;</code> 明确了
+<code>string</code> 不再是一个指向字符的指针变量, 而是指向字符的指针类型本身</p>
+</blockquote>
+    </article>
+  </body>
+</html>

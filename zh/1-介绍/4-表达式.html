@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>表达式</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>表达式</h2>
+<p><strong>表达式语句</strong> 由表达式和分号单词 <code>;</code> 组成</p>
+<p>每个表达式语句中的<strong>表达式</strong>都会被进行<strong>代换</strong>, 返回一个数据作为<strong>返回值</strong>,
+直到不能代换为止</p>
+<p><strong>返回值</strong>作为一种数据, 也对应着一个类型, <strong>表达式的类型</strong>即其返回值的类型</p>
+<p><strong>副作用</strong>, 包括<strong>赋值</strong>、<strong>输入</strong>和<strong>输出</strong>, 可能会产生在代换过程中</p>
+<blockquote>
+<p>一些表达式的目的主要在于计算, 得到返回值, 不会产生副作用</p>
+<p>另一些表达式的目的主要在于副作用, 此时其返回值不重要</p>
+<p>一个表达式语句中, 如果表达式的代换过程没有任何副作用, 那么这个表达式对程序运行没有任何效果</p>
+<p>一个表达式语句中, 如果表达式的代换过程同时利用了返回值和副作用, 或是有多个副作用, 则容易出现问题</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">float</span> radius;
+    <span class="hljs-keyword">float</span> pi;
+
+    pi = <span class="hljs-number">3.14</span>;
+
+    put_string(<span class="hljs-string">"input radius: "</span>);
+    radius = get_float();
+
+    put_string(<span class="hljs-string">"the area of given radius is: "</span>);
+    put_float(pi * radius * radius);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--1"><a class="header-link" href="#--1"></a>表达式的语法</h2>
+<table>
+<tr>
+    <th>表达式语法</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td>简单表达式</td>
+    <td><code>1</code> <code>3.14</code> <code>true</code> <code>&quot;Hello&quot;</code> <code>pi</code> <code>put_string</code></td>
+</tr>
+<tr>
+    <td>复合表达式</td>
+    <td>
+        <code>1 + 1</code> <code>f(x)</code> <code>a[i]</code> <code>pi * radius * radius</code>
+    </td>
+</tr>
+<tr>
+    <td>圆括号表达式</td>
+    <td><code>(1)</code> <code>(1 + 1)</code> <code>((pi * radius) * radius)</code></td>
+</tr>
+</table>
+
+<p>简单表达式由一个数据单词组成</p>
+<p>复合表达式由运算符和表达式组成</p>
+<p>可以使用圆括号<code>()</code> 构成圆括号表达式, <code>(&lt;表达式&gt;)</code>的值 即 <code>&lt;表达式&gt;</code>的值</p>
+<table>
+<tr>
+    <th>运算符</th>
+    <th>复合表达式语法</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td>一元运算符</td>
+    <td><code>&lt;运算符&gt; &lt;表达式&gt;</code></td>
+    <td><code>-3</code> <code>!true</code> <code>&amp;x</code> <code>*x</code></td>
+</tr>
+<tr>
+    <td>二元运算符</td>
+    <td>
+        <code>&lt;表达式&gt; &lt;运算符&gt; &lt;表达式&gt;</code>
+    </td>
+    <td>
+        <code>2 + 3</code> <code>5 != 6</code> <code>true || false</code> <code>pi = 3.14</code>
+    </td>
+</tr>
+<tr>
+    <td>括号运算符</td>
+    <td>
+        <code>&lt;表达式&gt; &lt;运算符&gt; &lt;表达式&gt; &lt;运算符&gt;</code>
+    </td>
+    <td>
+        <code>a[i]</code> <code>f(x)</code> <code>put_string(&quot;Hello&quot;)</code>
+    </td>
+</tr>
+</table>
+
+<p>依据上下文, 圆括号 <code>()</code> 可能作为一种括号运算符, 或者构成<strong>圆括号表达式</strong></p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    (((((put_string
+    (((((<span class="hljs-string">"Hello"</span>)))
+    )))))));
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--2"><a class="header-link" href="#--2"></a>嵌套表达式</h2>
+<p>复合表达式的定义中, 本身用到了表达式的概念</p>
+<p>这种<strong>递归</strong>的定义方式, 使得表达式可以相互<strong>嵌套</strong>, 构成<strong>树状结构</strong></p>
+<p class="img-container"><img src="../../graph/tree.svg" class="limited"/></p>
+<p>在嵌套表达式的代换过程中, 圆括号与运算符的性质, 决定了代换顺序</p>
+<p>代换时, 运算符的<strong>优先级</strong>和<strong>结合性</strong>会起作用</p>
+<p>建议在任何有歧义的时候, 使用圆括号 <code>()</code> 构成圆括号表达式, 避免歧义</p>
+<blockquote>
+<p><code>1 + 2 * 3</code> 的意思是 <code>(1 + 2) * 3</code> 还是 <code>1 + (2 * 3)</code></p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3</span>; 
+    <span class="hljs-comment">// 1 + (2 * 3)  </span>
+    <span class="hljs-comment">// 1 + 6  </span>
+    <span class="hljs-comment">// 7</span>
+
+    (<span class="hljs-number">1</span> + <span class="hljs-number">2</span>) * <span class="hljs-number">3</span>;
+    <span class="hljs-comment">// (1 + 2) * 3</span>
+    <span class="hljs-comment">// 3 * 3</span>
+    <span class="hljs-comment">// 9</span>
+
+    <span class="hljs-number">2</span> + <span class="hljs-number">3</span> &gt; <span class="hljs-number">4</span>;
+    <span class="hljs-comment">// (2 + 3) &gt; 4</span>
+    <span class="hljs-comment">// 5 &gt; 4</span>
+    <span class="hljs-comment">// true</span>
+
+    <span class="hljs-number">1</span> + <span class="hljs-number">1</span> == <span class="hljs-number">2</span>;
+    <span class="hljs-comment">// (1 + 1) == 2</span>
+    <span class="hljs-comment">// 2 == 2 </span>
+    <span class="hljs-comment">// true</span>
+
+    !<span class="hljs-literal">true</span> || <span class="hljs-literal">false</span>;
+    <span class="hljs-comment">// (!true) || false</span>
+    <span class="hljs-comment">// false || false</span>
+    <span class="hljs-comment">// false</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--3"><a class="header-link" href="#--3"></a>树状图</h2>
+<p>教程至此, 使用到的树状图有<strong>语法树</strong>, <strong>表达式树</strong></p>
+<p>简单类型和简单数据之外, C语言还有复合类型和复合数据, 构成了<strong>类型树</strong>和<strong>数据树</strong></p>
+<p>掌握C语言中的几种树状结构, 就掌握了C语言</p>
+<h2 id="--4"><a class="header-link" href="#--4"></a>代码风格</h2>
+    </article>
+  </body>
+</html>

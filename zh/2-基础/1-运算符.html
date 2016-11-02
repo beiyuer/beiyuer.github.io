@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>运算符</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>运算符</h2>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 算数运算符</span>
+    <span class="hljs-number">1</span> + <span class="hljs-number">1</span>; <span class="hljs-comment">// 2</span>
+    <span class="hljs-number">3</span> * <span class="hljs-number">4</span>; <span class="hljs-comment">// 12</span>
+    <span class="hljs-number">14</span> / <span class="hljs-number">3</span>; <span class="hljs-comment">// 4</span>
+    <span class="hljs-number">11</span> % <span class="hljs-number">3</span>; <span class="hljs-comment">// 2</span>
+
+    <span class="hljs-comment">// 比较运算符</span>
+    <span class="hljs-number">5</span> &lt; <span class="hljs-number">6</span>; <span class="hljs-comment">// true</span>
+    <span class="hljs-number">5</span> &gt;= <span class="hljs-number">6</span>; <span class="hljs-comment">// false</span>
+    <span class="hljs-number">5</span> == <span class="hljs-number">6</span>; <span class="hljs-comment">// false</span>
+    <span class="hljs-number">5</span> != <span class="hljs-number">6</span>; <span class="hljs-comment">// true</span>
+
+    <span class="hljs-comment">// 逻辑运算符</span>
+    !<span class="hljs-literal">true</span>; <span class="hljs-comment">// false</span>
+    !<span class="hljs-literal">false</span>; <span class="hljs-comment">// true</span>
+    <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">false</span>; <span class="hljs-comment">// false</span>
+    <span class="hljs-literal">true</span> || <span class="hljs-literal">false</span>; <span class="hljs-comment">// true</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><table>
+<tr>
+    <td><strong>算数运算符</strong></td>
+    <td>+ - * / %</td>
+</tr>
+<tr>
+    <td><strong>比较运算符</strong></td>
+    <td>== != &gt; &lt; &gt;= &lt;=</td>
+</tr>
+<tr>
+    <td><strong>逻辑运算符</strong></td>
+    <td>! &amp;&amp; ||</td>
+</tr>
+</table>
+
+<table>
+<tr>
+    <td><strong>赋值运算符</strong></td>
+    <td>=</td>
+</tr>
+<tr>
+    <td><strong>取内容运算符</strong></td>
+    <td>*</td>
+</tr>
+<tr>
+    <td><strong>取地址运算符</strong></td>
+    <td>&amp;</td>
+</tr>
+<tr>
+    <td><strong>下标运算符</strong></td>
+    <td>[]</td>
+</tr>
+<tr>
+    <td><strong>函数调用运算符</strong></td>
+    <td>(,)</td>
+</tr>
+<tr>
+    <td><strong>点运算符</strong></td>
+    <td>.</td>
+</tr>
+</table>
+
+
+<h2 id="--1"><a class="header-link" href="#--1"></a>函数调用</h2>
+<p>函数调用运算符 <code>( , )</code> 用来构成复合表达式</p>
+<p>函数调用表达式是使用了 <code>( , )</code> 的复合表达式, 其中头部第一个表达式的类型是函数类型</p>
+<p><strong>参数</strong>, 是出现在 <code>()</code> 内, 由逗号 <code>,</code> 分隔的一类表达式</p>
+<table>
+<tr>
+    <th>模式</th>
+    <th>语法</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td><code>f()</code></td>
+    <td><code>&lt;表达式&gt;()</code></td>
+    <td><code>get_float()</code> <code>pause()</code></td>
+</tr>
+<tr>
+    <td><code>f(x)</code></td>
+    <td><code>&lt;表达式&gt;(&lt;参数&gt;)</code></td>
+    <td>succeed(x)</td>
+</tr>
+<tr>
+    <td><code>f(x, y)</code></td>
+    <td><code>&lt;表达式&gt;(&lt;参数&gt;, &lt;参数&gt;)</code></td>
+    <td>add(x, y)</td>
+</tr>
+</table>
+    </article>
+  </body>
+</html>

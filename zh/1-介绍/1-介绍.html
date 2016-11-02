@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>介绍</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h1 id="-"><a class="header-link" href="#-"></a>介绍</h1>
+<p>第一章将会依次介绍C语言中 <strong>字符</strong>, <strong>单词</strong>, <strong>表达式</strong>和<strong>语句</strong> 的概念</p>
+<p><strong>字符</strong>组成<strong>单词</strong>, 单词组成<strong>表达式</strong>和<strong>语句</strong>, 并列的语句组成一份完整代码</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    put_string(<span class="hljs-string">"Hello"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--1"><a class="header-link" href="#--1"></a>注释行和预处理行</h2>
+<p>注释行以两个斜杠字符 <code>//</code> 开始, 直到一行的末尾</p>
+<p>预处理行以一个井号字符 <code>#</code> 开始, 直到一行的末尾</p>
+<p><strong>注释行</strong> 和 <strong>预处理行</strong> 不需太多关注</p>
+<pre class="hljs"><code><span class="hljs-comment">// 注释行用于解释程序的作用, 让阅读代码更方便, 而且不影响程序运行</span>
+
+<span class="hljs-comment">// `#include &lt;litan.h&gt;` 是一种预处理行, 可以把文件 `litan.h` 复制到代码中</span>
+<span class="hljs-comment">// `litan.h` 是一个文件, 内容为其他人的C语言代码</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 这个语句被执行, 把字符串 Hello 显示到了屏幕上</span>
+    put_string(<span class="hljs-string">"Hello"</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--2"><a class="header-link" href="#--2"></a>学习方法</h2>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-comment">// 在学到第二章前, 不用管 `int main() {` 这一行</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">//////////////////////////////////////////////////</span>
+    <span class="hljs-comment">// 在第一章, 只需要理解这一部分的语句</span>
+    <span class="hljs-comment">//////////////////////////////////////////////////</span>
+
+    <span class="hljs-comment">// 在学到第二章前, 不用管代码以下部分</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>    </article>
+  </body>
+</html>

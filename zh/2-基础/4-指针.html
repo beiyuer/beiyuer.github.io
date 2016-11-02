@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>用 &#x60;* &amp; []&#x60; 来实验指针和数组</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="-"><a class="header-link" href="#-"></a>用 <code>* &amp; []</code> 来实验指针和数组</h2>
+<blockquote>
+<p class="img-container"><img src="../../graph/tree.svg" class="limited"/></p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 第0步, 初始化</span>
+
+    <span class="hljs-comment">// 第5节将介绍各种类型的变量</span>
+
+    <span class="hljs-comment">// 定义一个数组, 数组名为a, 内容的大小为3, 类型为整数型</span>
+    <span class="hljs-keyword">int</span> a[<span class="hljs-number">3</span>];
+
+    <span class="hljs-comment">// `a[0]` 是数组中的第 1 个元素</span>
+    <span class="hljs-comment">// `a[i]` 是数组中的第 i + 1 个元素</span>
+    <span class="hljs-comment">// 给数组中的三个元素分别赋值</span>
+    a[<span class="hljs-number">0</span>] = <span class="hljs-number">1997</span>;
+    a[<span class="hljs-number">1</span>] = <span class="hljs-number">11</span>;
+    a[<span class="hljs-number">2</span>] = <span class="hljs-number">11</span>;
+
+    <span class="hljs-comment">// 定义一个指针, 指针名为p, 指针指向整数型</span>
+    <span class="hljs-keyword">int</span> *p;
+    <span class="hljs-comment">// 把数组的第一个元素的地址赋值给p</span>
+    p = &amp;a[<span class="hljs-number">0</span>];
+
+
+    <span class="hljs-comment">// 第1步, 分别使用数组和指针</span>
+
+    <span class="hljs-comment">// 使用数组</span>
+    <span class="hljs-comment">// 用下标运算符 `[]` 获得数组的元素</span>
+    a[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 1997</span>
+    a[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 11</span>
+    a[<span class="hljs-number">2</span>]; <span class="hljs-comment">// 11</span>
+    a[<span class="hljs-number">3</span>]; <span class="hljs-comment">// 未定义, 下表超出范围</span>
+    <span class="hljs-comment">// 用下标运算符 `[]` 为数组的元素赋值</span>
+    a[<span class="hljs-number">1</span>] = <span class="hljs-number">10</span>;
+    a[<span class="hljs-number">2</span>] = <span class="hljs-number">12</span>;
+
+
+    <span class="hljs-comment">// 检测 `p` 是否等于 `&amp;a[0]`</span>
+    p == &amp;a[<span class="hljs-number">0</span>]; <span class="hljs-comment">// true</span>
+    (p + <span class="hljs-number">1</span>) == &amp;a[<span class="hljs-number">1</span>]; <span class="hljs-comment">// true</span>
+    (p + <span class="hljs-number">2</span>) == &amp;a[<span class="hljs-number">2</span>]; <span class="hljs-comment">// true</span>
+    *p == a[<span class="hljs-number">0</span>]; <span class="hljs-comment">// true</span>
+    *(p + <span class="hljs-number">1</span>) == a[<span class="hljs-number">1</span>]; <span class="hljs-comment">// true</span>
+    *(p + <span class="hljs-number">2</span>) == a[<span class="hljs-number">2</span>]; <span class="hljs-comment">// true</span>
+
+
+    <span class="hljs-comment">// 使用指针获得数组的元素</span>
+    *p; <span class="hljs-comment">// 1997</span>
+    *(p + <span class="hljs-number">1</span>); <span class="hljs-comment">// 10</span>
+    *(p + <span class="hljs-number">2</span>); <span class="hljs-comment">// 12</span>
+    <span class="hljs-comment">// 使用指针为数组的元素赋值</span>
+    *(p + <span class="hljs-number">1</span>) = <span class="hljs-number">11</span>;
+    *(p + <span class="hljs-number">2</span>) = <span class="hljs-number">11</span>;
+
+
+    <span class="hljs-comment">// 第二步, 互相使用数组和指针的语法</span>
+
+    <span class="hljs-comment">// 检查 `p` 就是 `a`</span>
+    p == a; <span class="hljs-comment">// true</span>
+    p + <span class="hljs-number">1</span> == a + <span class="hljs-number">1</span>; <span class="hljs-comment">// true</span>
+    p + <span class="hljs-number">2</span> == a + <span class="hljs-number">2</span>; <span class="hljs-comment">// true</span>
+
+    <span class="hljs-comment">// 以指针的语法使用数组</span>
+    *(a + <span class="hljs-number">1</span>); <span class="hljs-comment">// 11</span>
+    *(a + <span class="hljs-number">2</span>); <span class="hljs-comment">// 11</span>
+    *(a + <span class="hljs-number">1</span>) = <span class="hljs-number">10</span>;
+    *(a + <span class="hljs-number">2</span>) = <span class="hljs-number">12</span>;
+
+    <span class="hljs-comment">// 以数组的语法使用指针</span>
+    <span class="hljs-comment">// `a[i]` 等价于 `*(a + i)`</span>
+    p[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 1997</span>
+    p[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 11</span>
+    p[<span class="hljs-number">2</span>]; <span class="hljs-comment">// 11</span>
+    p[<span class="hljs-number">1</span>] = <span class="hljs-number">10</span>;
+    p[<span class="hljs-number">2</span>] = <span class="hljs-number">12</span>;
+
+
+    <span class="hljs-comment">// 第三步, 给指针变量赋值</span>
+    <span class="hljs-comment">// 让 a 指向数组的第二个元素</span>
+    p = &amp;a[<span class="hljs-number">1</span>];
+    *p; <span class="hljs-comment">// 10</span>
+    *(p - <span class="hljs-number">1</span>); <span class="hljs-comment">// 1997</span>
+    *(p + <span class="hljs-number">1</span>); <span class="hljs-comment">// 12</span>
+    *(p + <span class="hljs-number">2</span>); <span class="hljs-comment">// error</span>
+
+    p = p + <span class="hljs-number">1</span>;
+    *(p - <span class="hljs-number">2</span>); <span class="hljs-comment">// 1997</span>
+    *(p - <span class="hljs-number">1</span>); <span class="hljs-comment">// 10</span>
+    *p; <span class="hljs-comment">// 12</span>
+    *(p + <span class="hljs-number">1</span>); <span class="hljs-comment">// error</span>
+
+    <span class="hljs-comment">// 让 a 指向数组的第一个元素</span>
+    p = a;
+
+
+    <span class="hljs-comment">// 第四步, 用混乱的语法使用数组和指针</span>
+
+    <span class="hljs-comment">// 把整数当数组或指针, 把数组或指针当整数</span>
+    a[i] == *(a + i); <span class="hljs-comment">// true</span>
+    i[a] == *(i + a); <span class="hljs-comment">// true</span>
+    *(a + i) == *(i + a); <span class="hljs-comment">// true</span>
+
+    <span class="hljs-comment">// 考虑到可读性, 不要写出类似下面的代码</span>
+    <span class="hljs-number">1</span>[p]; <span class="hljs-comment">// 11</span>
+    <span class="hljs-number">2</span>[p]; <span class="hljs-comment">// 11</span>
+    <span class="hljs-number">1</span>[p] = <span class="hljs-number">10</span>;
+    <span class="hljs-number">2</span>[p] = <span class="hljs-number">12</span>;
+    <span class="hljs-number">1</span>[a]; <span class="hljs-comment">// 10</span>
+    <span class="hljs-number">2</span>[a]; <span class="hljs-comment">// 12</span>
+    <span class="hljs-number">1</span>[a] = <span class="hljs-number">10</span>;
+    <span class="hljs-number">2</span>[a] = <span class="hljs-number">12</span>;
+
+    a[<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>[a]; <span class="hljs-comment">// true</span>
+    p[<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>[p]; <span class="hljs-comment">// true</span>
+
+    &amp;a[<span class="hljs-number">0</span>] == a; <span class="hljs-comment">// true</span>
+    &amp;*p == p; <span class="hljs-comment">// true</span>
+    &amp;*&amp;*p == p; <span class="hljs-comment">// true</span>
+
+
+    <span class="hljs-comment">// 第五步, 不仅指向数组的指针</span>
+    <span class="hljs-keyword">int</span> x = <span class="hljs-number">3</span>;
+    p = &amp;x;
+    *p; <span class="hljs-comment">// 3</span>
+    *p = <span class="hljs-number">5</span>;
+    x; <span class="hljs-comment">// 5</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>    </article>
+  </body>
+</html>

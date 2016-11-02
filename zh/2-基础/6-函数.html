@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>函数初始化语句</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>函数初始化语句</h2>
+<p>变量使用表达式初始化</p>
+<blockquote>
+<p><code>&lt;类型&gt; &lt;表达式&gt; = &lt;表达式&gt;;</code></p>
+</blockquote>
+<p>函数使用语句初始化</p>
+<blockquote>
+<p><code>&lt;类型&gt; &lt;表达式&gt; = &lt;语句&gt;;</code></p>
+</blockquote>
+<p>实际上, 赋值符 <code>=</code> 和 分号 <code>;</code> 应该省略</p>
+<p>此外, 表达式需要明确参数类型</p>
+<blockquote>
+<p><code>&lt;类型&gt; &lt;表达式&gt; &lt;语句&gt;</code></p>
+</blockquote>
+<h2 id="--1"><a class="header-link" href="#--1"></a>函数表达式的工作过程</h2>
+<ul class="list">
+<li>利用实际参数, 初始化形式参数</li>
+<li>执行函数内语句</li>
+<li>用 <code>return</code> 后的表达式, 代替函数调用表达式</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;math.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
+    <span class="hljs-keyword">return</span> x + y;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mul</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
+    <span class="hljs-keyword">return</span> x * y;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">power</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
+    <span class="hljs-keyword">int</span> result = y;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;  &lt; y; i++) {
+        sum = sum * y;
+    }
+    <span class="hljs-keyword">return</span> result;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-title">binary_function</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>;
+
+<span class="hljs-comment">// int reduce(int *data, int length, int initial, int binary_function(int x, int y))</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">reduce</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *data, <span class="hljs-keyword">int</span> length, <span class="hljs-keyword">int</span> initial, binary_function binary)</span> </span>{
+    <span class="hljs-keyword">int</span> result = initial;
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+        result = binary(result, data[i]);
+    }
+    <span class="hljs-keyword">return</span> result;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-keyword">int</span> i;
+
+    <span class="hljs-keyword">int</span> data[<span class="hljs-number">5</span>];
+    data[<span class="hljs-number">0</span>] = <span class="hljs-number">2</span>;
+    data[<span class="hljs-number">1</span>] = <span class="hljs-number">2</span>;
+    data[<span class="hljs-number">2</span>] = <span class="hljs-number">5</span>;
+    data[<span class="hljs-number">3</span>] = <span class="hljs-number">2</span>;
+    data[<span class="hljs-number">4</span>] = <span class="hljs-number">3</span>;
+
+    put_string(<span class="hljs-string">"the sum is "</span>);
+    put_int(reduce(data, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, add));
+    warp();
+
+    put_string(<span class="hljs-string">"the product is "</span>);
+    put_int(reduce(data, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, mul));
+    warp();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>    </article>
+  </body>
+</html>

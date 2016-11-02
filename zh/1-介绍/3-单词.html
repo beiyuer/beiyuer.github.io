@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>单词</title>
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="..\..\assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><link rel="stylesheet" href="../../assets/main.css"/>
+
+<h2 id="-"><a class="header-link" href="#-"></a>单词</h2>
+<p><strong>字母</strong>、<strong>数字</strong>和<strong>标点</strong>用来<strong>组成</strong>单词</p>
+<p>单词之间可以包含<strong>任意个空白字符</strong>, 也可以<strong>没有空白字符</strong></p>
+<p><strong>空白字符</strong>用来<strong>分隔</strong>单词, 防止歧义, 进行排版</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 试着找出下列代码中的所有单词</span>
+    <span class="hljs-keyword">float</span> radius;
+    <span class="hljs-keyword">float</span> pi;
+
+    pi = <span class="hljs-number">3.14</span>;
+
+    put_string(<span class="hljs-string">"input radius: "</span>);
+    radius = get_float();
+
+    put_string(<span class="hljs-string">"the area of given radius is: "</span>);
+    put_float(pi * radius * radius);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre><h2 id="--1"><a class="header-link" href="#--1"></a>单词分类</h2>
+<table>
+<tr>
+    <th>单词分类</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td><strong>类型</strong></td>
+    <td>void int float char string bool</td>
+</tr>
+<tr>
+    <td><strong>数据</strong></td>
+    <td>
+        0 3.14 &#39;a&#39; &quot;Hello&quot; true false
+        <br/>
+        radius pi main put_string pause
+    </td>
+</tr>
+<tr>
+    <td><strong>运算符</strong></td>
+    <td>= *</td>
+</tr>
+<tr>
+    <td><strong>语法词</strong></td>
+    <td>; return if</td>
+</tr>
+</table>
+
+
+<h3 id="--2"><a class="header-link" href="#--2"></a>类型</h3>
+<p>简单的<strong>类型</strong>可以用一个单词表示</p>
+<p><strong>类型</strong>可以看作<strong>数据</strong>的集合</p>
+<table>
+<tr>
+    <th>缩写</th>
+    <th>英文全称</th>
+    <th>释义</th>
+</tr>
+<tr>
+    <td>void</td>
+    <td></td>
+    <td>空类型</td>
+</tr>
+<tr>
+    <td>bool</td>
+    <td>boolean</td>
+    <td>逻辑(布尔)类型</td>
+</tr>
+<tr>
+    <td>char</td>
+    <td>character</td>
+    <td>字符类型</td>
+</tr>
+<tr>
+    <td>int</td>
+    <td>integer</td>
+    <td>整数类型</td>
+</tr>
+<tr>
+    <td>float</td>
+    <td></td>
+    <td>浮点数类型</td>
+</tr>
+<tr>
+    <td>string</td>
+    <td></td>
+    <td>字符串类型</td>
+</tr>
+</table>
+
+
+<h3 id="--3"><a class="header-link" href="#--3"></a>数据</h3>
+<p>简单的数据可以用一个单词表示</p>
+<p>C语言中的每一个<strong>数据</strong>都对应着一个<strong>类型</strong></p>
+<p><strong>字符</strong>数据 以单引号 <code>&#39;</code> 开头和结尾</p>
+<p><strong>字符串</strong>数据  以双引号 <code>&quot;</code> 开头和结尾</p>
+<p><strong>整数</strong>数据 和 <strong>浮点数</strong>数据 以数字开头, </p>
+<p><code>true</code> 和 <code>false</code> 是 <strong>逻辑</strong>数据, 分别代表<strong>真</strong>和<strong>假</strong></p>
+<h2 id="--4"><a class="header-link" href="#--4"></a>标识符</h2>
+<p><strong>标识符</strong> 是一种单词, 以字母、数字和下划线 <code>_</code> 组成, 且不能以数字开头</p>
+<p>类型, 数据, 运算符, 语法词, 四类单词之中, 都有满足标识符语法的单词</p>
+<p><strong>变量</strong>指的是代表数据的标识符</p>
+<p>每个标识符都需要被定义, 以确定这个标识符的分类</p>
+<p>标识符可以由C语言本身、标准库、第三方库或我们自己<strong>定义</strong></p>
+<p><strong>关键字</strong>是其中C语言本身定义了的标识符</p>
+<p>同一个标识符不能多次定义, 如自定义标识符不能与关键字冲突</p>
+<table>
+<tr>
+    <th>标识符来源</th>
+    <th>文件例子</th>
+    <th>标识符例子</th>
+</tr>
+<tr>
+    <td>关键字</td>
+    <td></td>
+    <td><code>void</code> <code>int</code> <code>float</code> <code>char</code></td>
+</tr>
+<tr>
+    <td>标准库</td>
+    <td><code>stdio.h</code></td>
+    <td><code>printf</code> <code>scanf</code> <code>FILE</code></td>
+</tr>
+<tr>
+    <td>第三方库</td>
+    <td><code>litan.h</code></td>
+    <td><code>bool</code> <code>true</code> <code>string</code> <code>put_string</code> <code>get_float</code></td>
+</tr>
+<tr>
+    <td>自定义</td>
+    <td></td>
+    <td><code>pi</code> <code>radius</code></td>
+</tr>
+</table>
+
+
+<h2 id="--5"><a class="header-link" href="#--5"></a>区分单词</h2>
+<p>从组成方式上, 单词可以分为五组</p>
+<p><strong>标识符</strong>, <strong>符号</strong>, <strong>数字数据</strong>, <strong>字符数据</strong>, <strong>字符串数据</strong></p>
+<p>通过单词的组成方式, 可以区分出代码中所有单词</p>
+<table>
+<tr>
+    <th>单词分类</th>
+    <th>例子</th>
+</tr>
+<tr>
+    <td><strong>标识符</strong></td>
+    <td>
+        void bool int float char string
+        <br/>
+        radius pi main put_string pause
+        <br/>
+        true false return if
+    </td>
+</tr>
+<tr>
+    <td><strong>符号</strong></td>
+    <td>= * ;</td>
+</tr>
+<tr>
+    <td><strong>数字数据</strong></td>
+    <td>
+        <code>0</code> <code>3.14</code>
+    </td>
+</tr>
+<tr>
+    <td><strong>字符数据</strong></td>
+    <td><code>&#39;a&#39;</code> <code>&#39;1&#39;</code> <code>&#39;*&#39;</code> <code>&#39; &#39;</code></td>
+</tr>
+<tr>
+    <td><strong>字符串数据</strong></td>
+    <td><code>&quot;&quot;</code> <code>&quot;Hello&quot;</code> <code>&quot;input radius&quot;</code></td>
+</tr>
+</table>
+
+
+<h2 id="--6"><a class="header-link" href="#--6"></a>代码风格</h2>
+<p>通过使用空白字符, 可以将C语言代码适当排版</p>
+<blockquote>
+<p>实际上C语言代码仍然是一行字符, 只是回车字符显示成了换行效果,</p>
+</blockquote>
+<p>下列程序虽然排版不当, 但是仍然可以运行</p>
+<pre class="hljs"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;litan.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-comment">// 不推荐把许多语句写在一行的风格</span>
+    put_string(<span class="hljs-string">"input radius: "</span>); <span class="hljs-keyword">float</span> radius; radius = get_float(); <span class="hljs-keyword">float</span> pi = <span class="hljs-number">3.14</span>;
+
+    <span class="hljs-comment">// 不推荐把一个语句写在多行的风格</span>
+    put_string
+    (
+    <span class="hljs-string">"the area of given radius is: "</span>
+    )
+    ;
+
+    <span class="hljs-comment">// 推荐一个语句占一行</span>
+    put_float(pi * radius * radius);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>    </article>
+  </body>
+</html>
