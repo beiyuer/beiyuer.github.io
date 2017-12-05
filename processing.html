@@ -19,20 +19,57 @@
 <h2 id="shape---2d-primitives"><a class="header-link" href="#shape---2d-primitives"></a>Shape - 2D Primitives</h2>
 <pre class="hljs"><code>rect(<span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><pre class="hljs"><code>ellipse(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><h2 id="environment"><a class="header-link" href="#environment"></a>Environment</h2>
 <pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
-ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)
-rect(width/<span class="hljs-number">4</span>, height/<span class="hljs-number">4</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="event"><a class="header-link" href="#event"></a>Event</h2>
+rect(width/<span class="hljs-number">4</span>, height/<span class="hljs-number">4</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)
+ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="color-setting"><a class="header-link" href="#color-setting"></a>Color Setting</h2>
+<pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+
+strokeWeight(<span class="hljs-number">10</span>)
+
+stroke(<span class="hljs-string">'#3399ff'</span>)
+fill(<span class="hljs-string">'#66ccff'</span>)
+ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="event"><a class="header-link" href="#event"></a>Event</h2>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
     size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
     frameRate(<span class="hljs-number">60</span>)
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
-    ellipse(random(width), random(height), <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)</code></pre><h2 id="input-query"><a class="header-link" href="#input-query"></a>Input Query</h2>
+    ellipse(random(width), random(height), <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><h2 id="animation"><a class="header-link" href="#animation"></a>Animation</h2>
+<ul class="list">
+<li><a href="http://www.techug.com/post/circulate.html">示例</a></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
+    size(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>)
+    frameRate(<span class="hljs-number">60</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
+    theta = radians(frameCount)
+    rho = height/<span class="hljs-number">2</span> * sin(<span class="hljs-number">5</span>*theta)
+    xy = rho*cos(theta), rho*sin(theta)
+    fill(<span class="hljs-number">128</span>+<span class="hljs-number">128</span>*sin(theta))
+    r = <span class="hljs-number">15</span>+<span class="hljs-number">10</span>*sin(theta)
+    ellipse(width/<span class="hljs-number">2</span>+xy[<span class="hljs-number">0</span>], height/<span class="hljs-number">2</span>+xy[<span class="hljs-number">1</span>], r, r)</code></pre><h2 id="video"><a class="header-link" href="#video"></a>Video</h2>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
+    size(<span class="hljs-number">600</span>, <span class="hljs-number">600</span>)
+    frameRate(<span class="hljs-number">60</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
+    theta = radians(frameCount)
+    rho = height/<span class="hljs-number">2</span> * sin(<span class="hljs-number">5</span>*theta)
+    xy = rho*cos(theta), rho*sin(theta)
+    fill(<span class="hljs-number">128</span>+<span class="hljs-number">128</span>*sin(theta))
+    r = <span class="hljs-number">15</span>+<span class="hljs-number">10</span>*sin(theta)
+    ellipse(width/<span class="hljs-number">2</span>+xy[<span class="hljs-number">0</span>], height/<span class="hljs-number">2</span>+xy[<span class="hljs-number">1</span>], r, r)
+
+    <span class="hljs-keyword">if</span> frameCount &gt;= <span class="hljs-number">360</span> <span class="hljs-keyword">and</span> frameCount &lt; <span class="hljs-number">720</span>:
+        saveFrame()
+    <span class="hljs-keyword">elif</span> frameCount == <span class="hljs-number">720</span>:
+        noLoop()</code></pre><h2 id="input-query"><a class="header-link" href="#input-query"></a>Input Query</h2>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
     size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
     frameRate(<span class="hljs-number">60</span>)
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
-    ellipse(mouseX, mouseY, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)</code></pre><h2 id="input-event"><a class="header-link" href="#input-event"></a>Input Event</h2>
+    ellipse(mouseX, mouseY, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><h2 id="input-event"><a class="header-link" href="#input-event"></a>Input Event</h2>
 <pre class="hljs"><code>state = <span class="hljs-keyword">False</span>
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
@@ -47,14 +84,7 @@ rect(width/<span class="hljs-number">4</span>, height/<span class="hljs-number">
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mouseClicked</span><span class="hljs-params">()</span>:</span> 
     <span class="hljs-keyword">global</span> state
-    state = <span class="hljs-keyword">not</span> state</code></pre><h2 id="color-setting"><a class="header-link" href="#color-setting"></a>Color Setting</h2>
-<pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
-
-strokeWeight(<span class="hljs-number">10</span>)
-
-stroke(<span class="hljs-string">'#3399ff'</span>)
-fill(<span class="hljs-string">'#66ccff'</span>)
-ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="typography"><a class="header-link" href="#typography"></a>Typography</h2>
+    state = <span class="hljs-keyword">not</span> state</code></pre><h2 id="typography"><a class="header-link" href="#typography"></a>Typography</h2>
 <pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
 
 textSize(height/<span class="hljs-number">5</span>)
