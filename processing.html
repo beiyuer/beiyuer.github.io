@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Processing</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="processing"><a class="header-link" href="#processing"></a>Processing</h1>
+<ul class="list">
+<li><a href="https://processing.org/">官网</a></li>
+<li><a href="http://py.processing.org/tutorials/">教程</a></li>
+<li><a href="https://py.processing.org/reference/">手册</a></li>
+<li><a href="https://processing.org/examples/">示例</a></li>
+</ul>
+<h2 id="shape---2d-primitives"><a class="header-link" href="#shape---2d-primitives"></a>Shape - 2D Primitives</h2>
+<pre class="hljs"><code>rect(<span class="hljs-number">25</span>, <span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><pre class="hljs"><code>ellipse(<span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>, <span class="hljs-number">50</span>)</code></pre><h2 id="environment"><a class="header-link" href="#environment"></a>Environment</h2>
+<pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)
+rect(width/<span class="hljs-number">4</span>, height/<span class="hljs-number">4</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="event"><a class="header-link" href="#event"></a>Event</h2>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
+    size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+    frameRate(<span class="hljs-number">60</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
+    ellipse(random(width), random(height), <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)</code></pre><h2 id="input-query"><a class="header-link" href="#input-query"></a>Input Query</h2>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
+    size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+    frameRate(<span class="hljs-number">60</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span>
+    ellipse(mouseX, mouseY, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>)</code></pre><h2 id="input-event"><a class="header-link" href="#input-event"></a>Input Event</h2>
+<pre class="hljs"><code>state = <span class="hljs-keyword">False</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>:</span>
+    size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+    frameRate(<span class="hljs-number">60</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span>:</span> 
+    <span class="hljs-keyword">if</span> state:
+        ellipse(mouseX, mouseY, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>)
+    <span class="hljs-keyword">else</span>:
+        rect(mouseX<span class="hljs-number">-10</span>, mouseY<span class="hljs-number">-10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mouseClicked</span><span class="hljs-params">()</span>:</span> 
+    <span class="hljs-keyword">global</span> state
+    state = <span class="hljs-keyword">not</span> state</code></pre><h2 id="color-setting"><a class="header-link" href="#color-setting"></a>Color Setting</h2>
+<pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+
+strokeWeight(<span class="hljs-number">10</span>)
+
+stroke(<span class="hljs-string">'#3399ff'</span>)
+fill(<span class="hljs-string">'#66ccff'</span>)
+ellipse(width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)</code></pre><h2 id="typography"><a class="header-link" href="#typography"></a>Typography</h2>
+<pre class="hljs"><code>size(<span class="hljs-number">800</span>, <span class="hljs-number">600</span>)
+
+textSize(height/<span class="hljs-number">5</span>)
+textAlign(CENTER, BOTTOM)
+text(<span class="hljs-string">'Game Over'</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)
+
+textSize(height/<span class="hljs-number">10</span>)
+textAlign(CENTER, TOP)
+text(<span class="hljs-string">'Retry'</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>)
+text(<span class="hljs-string">'Exit'</span>, width/<span class="hljs-number">2</span>, height/<span class="hljs-number">2</span>+height/<span class="hljs-number">10</span>)</code></pre>    </article>
+  </body>
+</html>
