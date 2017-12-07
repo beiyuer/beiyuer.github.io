@@ -1,0 +1,500 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Homework 1 Coordinate - Solution 1</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="homework-1-coordinate---solution-1"><a class="header-link" href="#homework-1-coordinate---solution-1"></a>Homework 1 Coordinate - Solution 1</h1>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+pos = mc.player.getTilePos()
+x = pos.x
+y = pos.y
+z = pos.z
+
+size = <span class="hljs-number">10</span>
+smooth_sand_stone = (<span class="hljs-number">24</span>, <span class="hljs-number">0</span>)
+
+i = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> i &lt; size:
+
+    mc.setBlocks(
+        x-i, y-i, z-i,
+        x+i, y-i, z+i,
+        smooth_sand_stone)
+
+    i = i + <span class="hljs-number">1</span></code></pre><h1 id="homework-1-coordinate---solution-2"><a class="header-link" href="#homework-1-coordinate---solution-2"></a>Homework 1 Coordinate - Solution 2</h1>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+height = <span class="hljs-number">100</span>
+size = <span class="hljs-number">20</span>
+mc.player.setTilePos(<span class="hljs-number">0</span>, height, <span class="hljs-number">0</span>)
+
+wool = <span class="hljs-number">35</span>
+red_wool = (wool, <span class="hljs-number">14</span>)
+green_wool = (wool, <span class="hljs-number">5</span>)
+blue_wool = (wool, <span class="hljs-number">11</span>)
+purple_wool = (wool, <span class="hljs-number">10</span>)
+mcdrawing.drawLine(<span class="hljs-number">0</span>, height, <span class="hljs-number">0</span>, size, height, <span class="hljs-number">0</span>, red_wool)
+mcdrawing.drawLine(<span class="hljs-number">0</span>, height, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, height+size, <span class="hljs-number">0</span>, green_wool)
+mcdrawing.drawLine(<span class="hljs-number">0</span>, height, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, height, size, blue_wool)
+mcdrawing.drawPoint3d(<span class="hljs-number">3</span>, <span class="hljs-number">100</span>+<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, purple_wool)</code></pre><h1 id="homework-2-pyramids---solution-1"><a class="header-link" href="#homework-2-pyramids---solution-1"></a>Homework 2 Pyramids - Solution 1</h1>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+pos = mc.player.getTilePos()
+x = pos.x
+y = pos.y
+z = pos.z
+
+size = <span class="hljs-number">10</span>
+smooth_sand_stone = (<span class="hljs-number">24</span>, <span class="hljs-number">0</span>)
+
+i = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> i &lt; size:
+
+    mc.setBlocks(
+        x-i, y-i, z-i,
+        x+i, y-i, z+i,
+        smooth_sand_stone)
+
+    i = i + <span class="hljs-number">1</span></code></pre><h1 id="homework-2-pyramids---solution-2"><a class="header-link" href="#homework-2-pyramids---solution-2"></a>Homework 2 Pyramids - Solution 2</h1>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+pos = mc.player.getTilePos()
+x = pos.x
+y = pos.y
+z = pos.z
+
+size = <span class="hljs-number">20</span>
+smooth_sand_stone = (<span class="hljs-number">24</span>, <span class="hljs-number">0</span>)
+
+points = minecraftstuff.Points()
+points.add(x+<span class="hljs-number">0</span>, y+size, z+<span class="hljs-number">0</span>)
+points.add(x+size, y, z+size)
+points.add(x+size, y, z-size)
+mcdrawing.drawFace(points, <span class="hljs-keyword">True</span>, smooth_sand_stone)
+
+points = minecraftstuff.Points()
+points.add(x+<span class="hljs-number">0</span>, y+size, z+<span class="hljs-number">0</span>)
+points.add(x+size, y, z-size)
+points.add(x-size, y, z-size)
+mcdrawing.drawFace(points, <span class="hljs-keyword">True</span>, smooth_sand_stone)
+
+points = minecraftstuff.Points()
+points.add(x+<span class="hljs-number">0</span>, y+size, z+<span class="hljs-number">0</span>)
+points.add(x-size, y, z-size)
+points.add(x-size, y, z+size)
+mcdrawing.drawFace(points, <span class="hljs-keyword">True</span>, smooth_sand_stone)
+
+points = minecraftstuff.Points()
+points.add(x+<span class="hljs-number">0</span>, y+size, z+<span class="hljs-number">0</span>)
+points.add(x-size, y, z+size)
+points.add(x+size, y, z+size)
+mcdrawing.drawFace(points, <span class="hljs-keyword">True</span>, smooth_sand_stone)</code></pre><h1 id="alien-invasion"><a class="header-link" href="#alien-invasion"></a>Alien Invasion</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: AlienInvasion.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program will create an Alien Invasion in Minecraft, resistance is </span>
+<span class="hljs-comment"># futile though as you will never escape.</span>
+
+<span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.block <span class="hljs-keyword">as</span> block
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+<span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment">#function get the distance between 2 points</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">distanceBetweenPoints</span><span class="hljs-params">(point1, point2)</span>:</span>
+    xd = point2.x - point1.x
+    yd = point2.y - point1.y
+    zd = point2.z - point1.z
+    <span class="hljs-keyword">return</span> math.sqrt((xd*xd) + (yd*yd) + (zd*zd))
+
+<span class="hljs-comment">#constants</span>
+<span class="hljs-comment"># will go here!</span>
+HOVER_HEIGHT = <span class="hljs-number">15</span>
+ALIEN_TAUNTS = [<span class="hljs-string">"&lt;aliens&gt;You cannot run forever"</span>,
+                <span class="hljs-string">"&lt;aliens&gt;Resistance is useless"</span>,
+                <span class="hljs-string">"&lt;aliens&gt;We only want to be friends"</span>]
+
+<span class="hljs-comment">#create minecraft and minecraftdrawing objects</span>
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+<span class="hljs-comment">#set the aliens position</span>
+alienPos = mc.player.getTilePos()
+alienPos.y = alienPos.y + <span class="hljs-number">50</span>
+
+<span class="hljs-comment">#set the flying saucer's mode</span>
+mode = <span class="hljs-string">"landing"</span>
+
+alienShape = minecraftstuff.MinecraftShape(mc, alienPos)
+
+alienShape.setBlock(<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,block.WOOL.id, <span class="hljs-number">5</span>)
+alienShape.setBlock(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,block.WOOL.id, <span class="hljs-number">5</span>)
+alienShape.setBlock(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,block.WOOL.id, <span class="hljs-number">5</span>)
+alienShape.setBlock(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,block.WOOL.id, <span class="hljs-number">5</span>)
+alienShape.setBlock(<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,block.GLOWSTONE_BLOCK.id)
+alienShape.setBlock(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,block.GLOWSTONE_BLOCK.id)
+
+<span class="hljs-comment">#loop</span>
+<span class="hljs-keyword">while</span> mode != <span class="hljs-string">"missionaccomplished"</span>:
+    <span class="hljs-comment">#get the players position</span>
+    playerPos = mc.player.getTilePos() 
+
+    <span class="hljs-comment"># if its landing, set target to be above players head</span>
+    <span class="hljs-keyword">if</span> mode == <span class="hljs-string">"landing"</span>:
+        mc.postToChat(<span class="hljs-string">"&lt;aliens&gt; We do not come in peace - please panic"</span>)
+        alienTarget = playerPos.clone()
+        alienTarget.y = alienTarget.y + HOVER_HEIGHT
+        mode = <span class="hljs-string">"attack"</span>
+    <span class="hljs-keyword">elif</span> mode == <span class="hljs-string">"attack"</span>:
+        <span class="hljs-comment">#check to see if the alien ship is above the player</span>
+        <span class="hljs-keyword">if</span> alienPos.x == playerPos.x <span class="hljs-keyword">and</span> alienPos.z == playerPos.z:
+            <span class="hljs-comment">#the alienship is above the player</span>
+            mc.postToChat(<span class="hljs-string">"&lt;aliens&gt;We have you now!"</span>)
+
+            <span class="hljs-comment"># create a room</span>
+            mc.setBlocks(<span class="hljs-number">0</span>,<span class="hljs-number">50</span>,<span class="hljs-number">0</span>,<span class="hljs-number">6</span>,<span class="hljs-number">56</span>,<span class="hljs-number">6</span>,block.BEDROCK.id)
+            mc.setBlocks(<span class="hljs-number">1</span>,<span class="hljs-number">51</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">55</span>,<span class="hljs-number">5</span>,block.AIR.id)
+            mc.setBlock(<span class="hljs-number">3</span>,<span class="hljs-number">55</span>,<span class="hljs-number">3</span>,block.GLOWSTONE_BLOCK.id)
+
+            <span class="hljs-comment">#beam up player</span>
+            mc.player.setTilePos(<span class="hljs-number">3</span>,<span class="hljs-number">51</span>,<span class="hljs-number">5</span>)
+            time.sleep(<span class="hljs-number">10</span>)
+            mc.postToChat(<span class="hljs-string">"&lt;aliens&gt;Not very interesting at all - send it back"</span>)
+            time.sleep(<span class="hljs-number">2</span>)
+
+            <span class="hljs-comment">#send the player back to the original position</span>
+            mc.player.setTilePos(
+                playerPos.x, playerPos.y, playerPos.z)
+
+            <span class="hljs-comment">#clear the room</span>
+            mc.setBlocks(<span class="hljs-number">0</span>,<span class="hljs-number">50</span>,<span class="hljs-number">0</span>,<span class="hljs-number">6</span>,<span class="hljs-number">56</span>,<span class="hljs-number">6</span>,block.AIR.id)
+            mode = <span class="hljs-string">"missionaccomplished"</span>
+
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment">#the player got away</span>
+            mc.postToChat(ALIEN_TAUNTS[random.randint(<span class="hljs-number">0</span>,len(ALIEN_TAUNTS)<span class="hljs-number">-1</span>)])
+            alienTarget = playerPos.clone()
+            alienTarget.y = alienTarget.y + HOVER_HEIGHT
+
+    <span class="hljs-comment">#move the flying saucer towards its target</span>
+    <span class="hljs-keyword">if</span> alienPos != alienTarget:
+
+        <span class="hljs-comment">#get the blocks in between block friend and player, </span>
+        <span class="hljs-comment"># by 'drawing' an imaginary line</span>
+        line = mcdrawing.getLine(alienPos.x, alienPos.y, alienPos.z,
+                                 alienTarget.x, alienTarget.y, alienTarget.z)
+
+        <span class="hljs-comment">#loop through the blocks in between the alien and the target</span>
+        <span class="hljs-keyword">for</span> nextBlock <span class="hljs-keyword">in</span> line:
+            <span class="hljs-comment">#move the block friend to the next block</span>
+            <span class="hljs-comment"># move the alien shape to the new position</span>
+            alienShape.move(nextBlock.x, nextBlock.y, nextBlock.z)
+
+            <span class="hljs-comment"># time to sleep between each block move</span>
+            time.sleep(<span class="hljs-number">0.25</span>)
+
+        <span class="hljs-comment"># we have reached our target, so set the target to be friend's position</span>
+        alienPos = alienTarget.clone()
+
+<span class="hljs-comment">#clear the alien ship</span>
+alienShape.clear()</code></pre><h1 id="woodenhorse"><a class="header-link" href="#woodenhorse"></a>WoodenHorse</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: WoodenHorse.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program shows how to use the MinecraftShape functions in</span>
+<span class="hljs-comment"># minecraftstuff to create and move a wooden horse shape.</span>
+
+<span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.block <span class="hljs-keyword">as</span> block
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-comment">#create minecraft and minecraftdrawing objects</span>
+mc = minecraft.Minecraft.create()
+
+<span class="hljs-comment">#set the horses position</span>
+horsePos = mc.player.getTilePos()
+horsePos.z = horsePos.z + <span class="hljs-number">1</span>
+horsePos.y = horsePos.y + <span class="hljs-number">1</span>
+
+<span class="hljs-comment">#create the horseShape</span>
+horseShape = minecraftstuff.MinecraftShape(mc, horsePos)
+
+<span class="hljs-comment">#create the wooden horse by setting blocks</span>
+horseShape.setBlock(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+horseShape.setBlock(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,block.WOOD_PLANKS.id)
+
+<span class="hljs-comment">#make the horse move</span>
+<span class="hljs-keyword">for</span> count <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>):
+    time.sleep(<span class="hljs-number">1</span>)
+    horseShape.moveBy(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+
+horseShape.clear()</code></pre><h1 id="blockfriend"><a class="header-link" href="#blockfriend"></a>BlockFriend</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: BlockFriend.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program will create a block friend who will follow you around and</span>
+<span class="hljs-comment"># generally be quite annoying!</span>
+
+
+<span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.block <span class="hljs-keyword">as</span> block
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+<span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-comment">#function get the distance between 2 points</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">distanceBetweenPoints</span><span class="hljs-params">(point1, point2)</span>:</span>
+    xd = point2.x - point1.x
+    yd = point2.y - point1.y
+    zd = point2.z - point1.z
+    <span class="hljs-keyword">return</span> math.sqrt((xd*xd) + (yd*yd) + (zd*zd))
+
+<span class="hljs-comment">#constants</span>
+<span class="hljs-comment"># how far away the block has to be before he stops following</span>
+TOO_FAR_AWAY = <span class="hljs-number">15</span>
+
+<span class="hljs-comment">#create minecraft and minecraftstuff objects</span>
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+<span class="hljs-comment">#set the blocks mood</span>
+blockMood = <span class="hljs-string">"happy"</span>
+
+<span class="hljs-comment">#create the block next to the player</span>
+friend = mc.player.getTilePos()
+friend.x = friend.x + <span class="hljs-number">5</span>
+<span class="hljs-comment"># find out the height of the world at x, y, so the friend is on top</span>
+friend.y = mc.getHeight(friend.x, friend.z)
+<span class="hljs-comment"># create the block </span>
+mc.setBlock(friend.x, friend.y, friend.z, block.DIAMOND_BLOCK.id)
+<span class="hljs-comment"># say hello</span>
+mc.postToChat(<span class="hljs-string">"&lt;block&gt; Hello friend"</span>)
+<span class="hljs-comment"># the friends target is where he currently is</span>
+target = friend.clone()
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+
+    <span class="hljs-comment">#get players position</span>
+    pos = mc.player.getTilePos()
+    distance = distanceBetweenPoints(pos, friend)
+    <span class="hljs-comment">#apply the rules to work out where the block should be doing next</span>
+    <span class="hljs-comment"># am I happy?</span>
+    <span class="hljs-keyword">if</span> blockMood == <span class="hljs-string">"happy"</span>:
+        <span class="hljs-comment">#where is the player?  Are they near enough to me or should I</span>
+        <span class="hljs-comment"># move to them?</span>
+        <span class="hljs-keyword">if</span> distance &lt; TOO_FAR_AWAY:
+            target = pos.clone()
+        <span class="hljs-keyword">else</span>:
+            blockMood = <span class="hljs-string">"sad"</span>
+            mc.postToChat(
+                <span class="hljs-string">"&lt;block&gt; Come back. You are too far away. I need a hug!"</span>)
+    <span class="hljs-comment"># am I sad?</span>
+    <span class="hljs-keyword">elif</span> blockMood == <span class="hljs-string">"sad"</span>:
+        <span class="hljs-comment">#if Im sad, I'll wait for my friend to come close and give me a hug</span>
+        <span class="hljs-comment"># before I'm happy again</span>
+        <span class="hljs-comment">#print distance</span>
+        <span class="hljs-keyword">if</span> distance &lt;= <span class="hljs-number">1</span>:
+            blockMood = <span class="hljs-string">"happy"</span>
+            mc.postToChat(<span class="hljs-string">"&lt;block&gt; Awww thanks. Lets go."</span>)
+
+    <span class="hljs-comment">#move block to the target</span>
+    <span class="hljs-keyword">if</span> friend != target:
+        <span class="hljs-comment">#get the blocks in between block friend and player, by 'drawing'</span>
+        <span class="hljs-comment"># an imaginary line</span>
+        line = mcdrawing.getLine(friend.x, friend.y, friend.z,
+                                 target.x, target.y, target.z)
+        <span class="hljs-comment">#loop through the blocks in between the friend and the target</span>
+        <span class="hljs-comment"># loop to the last but 1 block (:-1) otherwise the friend will be</span>
+        <span class="hljs-comment">#  sitting on top of the player</span>
+        <span class="hljs-keyword">for</span> nextBlock <span class="hljs-keyword">in</span> line[:<span class="hljs-number">-1</span>]:
+            <span class="hljs-comment">#move the block friend to the next block</span>
+            <span class="hljs-comment"># clear the old block by making it air</span>
+            mc.setBlock(friend.x, friend.y, friend.z, block.AIR.id)
+            <span class="hljs-comment"># set the position of the block friend to be the next block in-line</span>
+            friend = nextBlock.clone()
+            <span class="hljs-comment"># get the height of the land at the new position</span>
+            friend.y = mc.getHeight(friend.x, friend.z)
+            <span class="hljs-comment"># draw the block friend in the new position </span>
+            mc.setBlock(friend.x, friend.y, friend.z, block.DIAMOND_BLOCK.id)
+            <span class="hljs-comment"># time to sleep between each block move</span>
+            time.sleep(<span class="hljs-number">0.25</span>)
+        <span class="hljs-comment"># we have reached our target, so set the target to be friend's position</span>
+        target = friend.clone()
+
+    <span class="hljs-comment">#sleep for a little bit to give the computer a rest!</span>
+    time.sleep(<span class="hljs-number">0.25</span>)</code></pre><h1 id="randomnumber"><a class="header-link" href="#randomnumber"></a>RandomNumber</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: RandomNumber.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program shows how to create a random number using python.</span>
+
+<span class="hljs-keyword">import</span> random
+randomNo = random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+print(randomNo)</code></pre><h1 id="randomnumberif"><a class="header-link" href="#randomnumberif"></a>RandomNumberIf</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: RandomNumberIf.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program shows how to use random numbers and probability to make</span>
+<span class="hljs-comment"># different things happen.</span>
+
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">if</span> random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>) == <span class="hljs-number">10</span>:
+    print(<span class="hljs-string">"This happens about 1 time in 10"</span>)
+<span class="hljs-keyword">else</span>:
+    print(<span class="hljs-string">"This happens about 9 times out of 10"</span>)</code></pre><h1 id="blockfriendrandom"><a class="header-link" href="#blockfriendrandom"></a>BlockFriendRandom</h1>
+<pre class="hljs"><code><span class="hljs-comment"># Adventure 7: BlockFriendRandom.py</span>
+
+<span class="hljs-comment"># From the book: "Adventures in Minecraft", 2nd Edition</span>
+<span class="hljs-comment"># written by David Whale and Martin O'Hanlon, Wiley, 2017</span>
+<span class="hljs-comment"># http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119439582.html</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This program will create a block friend who will follow you around and</span>
+<span class="hljs-comment"># randomly be quite annoying!</span>
+
+<span class="hljs-keyword">import</span> mcpi.minecraft <span class="hljs-keyword">as</span> minecraft
+<span class="hljs-keyword">import</span> mcpi.block <span class="hljs-keyword">as</span> block
+<span class="hljs-keyword">import</span> mcpi.minecraftstuff <span class="hljs-keyword">as</span> minecraftstuff
+<span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">import</span> time
+<span class="hljs-comment">#import random module</span>
+<span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment">#function get the distance between 2 points</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">distanceBetweenPoints</span><span class="hljs-params">(point1, point2)</span>:</span>
+    xd = point2.x - point1.x
+    yd = point2.y - point1.y
+    zd = point2.z - point1.z
+    <span class="hljs-keyword">return</span> math.sqrt((xd*xd) + (yd*yd) + (zd*zd))
+
+<span class="hljs-comment">#constants</span>
+<span class="hljs-comment"># how far away the block has to be before he stops following</span>
+TOO_FAR_AWAY = <span class="hljs-number">15</span>
+
+<span class="hljs-comment">#create minecraft and minecraftstuff objects</span>
+mc = minecraft.Minecraft.create()
+mcdrawing = minecraftstuff.MinecraftDrawing(mc)
+
+<span class="hljs-comment">#set the blocks mood</span>
+blockMood = <span class="hljs-string">"happy"</span>
+
+<span class="hljs-comment">#create the block next to the player</span>
+friend = mc.player.getTilePos()
+friend.x = friend.x + <span class="hljs-number">5</span>
+<span class="hljs-comment"># find out the height of the world at x, y, so the friend is on top</span>
+friend.y = mc.getHeight(friend.x, friend.z)
+<span class="hljs-comment"># create the block </span>
+mc.setBlock(friend.x, friend.y, friend.z, block.DIAMOND_BLOCK.id)
+<span class="hljs-comment"># say hello</span>
+mc.postToChat(<span class="hljs-string">"&lt;block&gt; Hello friend"</span>)
+<span class="hljs-comment"># the friends target is where he currently is</span>
+target = friend.clone()
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+
+    <span class="hljs-comment">#get players position</span>
+    pos = mc.player.getTilePos()
+    distance = distanceBetweenPoints(pos, friend)
+    <span class="hljs-comment">#apply the rules to work out where the block should be doing next</span>
+    <span class="hljs-comment"># am I happy?</span>
+    <span class="hljs-keyword">if</span> blockMood == <span class="hljs-string">"happy"</span>:
+        <span class="hljs-comment">#where is the player?  Are they near enough to me or should I</span>
+        <span class="hljs-comment"># move to them?</span>
+        <span class="hljs-keyword">if</span> distance &lt; TOO_FAR_AWAY:
+            target = pos.clone()
+        <span class="hljs-keyword">else</span>:
+            blockMood = <span class="hljs-string">"sad"</span>
+            mc.postToChat(
+                <span class="hljs-string">"&lt;block&gt; Come back. You are too far away. I need a hug!"</span>)
+
+    <span class="hljs-comment"># am I sad?</span>
+    <span class="hljs-keyword">elif</span> blockMood == <span class="hljs-string">"sad"</span>:
+        <span class="hljs-comment">#if Im sad, I'll wait for my friend to come close and give me a hug</span>
+        <span class="hljs-comment"># before I'm happy again</span>
+        <span class="hljs-comment">#print distance</span>
+        <span class="hljs-keyword">if</span> distance &lt;= <span class="hljs-number">1</span>:
+            blockMood = <span class="hljs-string">"happy"</span>
+            mc.postToChat(<span class="hljs-string">"&lt;block&gt; Awww thanks. Lets go."</span>)
+        <span class="hljs-keyword">if</span> random.randint(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>) == <span class="hljs-number">100</span>:
+            blockMood = <span class="hljs-string">"hadenough"</span>
+            mc.postToChat(<span class="hljs-string">"&lt;block&gt; Thats it. I have had enough."</span>)
+
+    <span class="hljs-comment">#Challenge</span>
+    <span class="hljs-comment">#elif blockMood == "hadenough":</span>
+    <span class="hljs-comment">#    if random.randint(1,50) = 50:</span>
+    <span class="hljs-comment">#        blockMood = "sad"</span>
+    <span class="hljs-comment">#        mc.postToChat("&lt;block&gt; I forgive you, can I have that hug now?")</span>
+
+    <span class="hljs-comment">#move block to the target</span>
+    <span class="hljs-keyword">if</span> friend != target:
+        <span class="hljs-comment">#get the blocks in between block friend and player, by 'drawing'</span>
+        <span class="hljs-comment"># an imaginary line</span>
+        line = mcdrawing.getLine(friend.x, friend.y, friend.z,
+                                 target.x, target.y, target.z)
+        <span class="hljs-comment">#loop through the blocks in between the friend and the target</span>
+        <span class="hljs-comment"># loop to the last but 1 block (:-1) otherwise the friend will be </span>
+        <span class="hljs-comment">#  sitting on top of the player</span>
+        <span class="hljs-keyword">for</span> nextBlock <span class="hljs-keyword">in</span> line[:<span class="hljs-number">-1</span>]:
+            <span class="hljs-comment">#move the block friend to the next block</span>
+            <span class="hljs-comment"># clear the old block by making it air</span>
+            mc.setBlock(friend.x, friend.y, friend.z, block.AIR.id)
+            <span class="hljs-comment"># set the position of the block friend to be the next block in-line</span>
+            friend = nextBlock.clone()
+            <span class="hljs-comment"># get the height of the land at the new position</span>
+            friend.y = mc.getHeight(friend.x, friend.z)
+            <span class="hljs-comment"># draw the block friend in the new position </span>
+            mc.setBlock(friend.x, friend.y, friend.z, block.DIAMOND_BLOCK.id)
+            <span class="hljs-comment"># time to sleep between each block move</span>
+            time.sleep(<span class="hljs-number">0.25</span>)
+        <span class="hljs-comment"># we have reached our target, so set the target to be friend's position</span>
+        target = friend.clone()
+
+    <span class="hljs-comment">#sleep for a little bit to give the computer a rest!</span>
+    time.sleep(<span class="hljs-number">0.25</span>)</code></pre>    </article>
+  </body>
+</html>
